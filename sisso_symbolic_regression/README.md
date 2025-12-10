@@ -6,7 +6,7 @@
 A comprehensive workflow repository for material property prediction using SISSO (Sure Independence Screening and Sparsifying Operator) with post-processing tools for analysis and visualization.
 
 > **Note:** This is a sub-repository of the main project:  
-> **[Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-Materials-Discovery](https://github.com/yourusername/Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-Materials-Discovery)**
+> **[Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-Materials-Discovery](https://github.com/Shaswat-qm-researcher/Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-Materials-Discovery/)**
 
 ## Overview
 
