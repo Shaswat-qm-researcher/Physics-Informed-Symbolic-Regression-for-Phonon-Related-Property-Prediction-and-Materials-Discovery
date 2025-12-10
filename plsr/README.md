@@ -31,7 +31,7 @@ flowchart TD
     E --> F[Feature Standardization μ=0, σ=1]
     F --> G[PLSR Model Training n_components=5]
     G --> H[GridSearch Optimization max_iter, tol]
-    H --> I[Feature Selection |L| > 0.10, ΔR² > 0.05]
+    H --> I[Feature Selection \|L\| > 0.10, ΔR² > 0.05]
     I --> J[Calculate Explained Variance]
     J --> K[Generate Visualizations]
     K --> L[results/ - Export Results]
