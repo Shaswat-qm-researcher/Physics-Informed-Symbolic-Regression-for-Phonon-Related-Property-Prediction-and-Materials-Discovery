@@ -46,12 +46,12 @@ flowchart TD
     L --> L1[Excel Files - Performance Metrics]
     L --> L2[PDF Figures - Publication Quality]
 
-style A fill:#90EE90, font-size:20px
-style N fill:#FFD700, font-size:20px
-style B fill:#87CEEB, font-size:18px
-style D fill:#87CEEB, font-size:18px
-style L fill:#FFA500, font-size:18px
-style K fill:#DDA0DD, font-size:18px
+style A fill:#90EE90, font-size:24px, font-family:Arial
+style N fill:#FFD700, font-size:24px, font-family:Arial
+style B fill:#87CEEB, font-size:24px, font-family:Arial
+style D fill:#87CEEB, font-size:24px, font-family:Arial
+style L fill:#FFA500, font-size:24px, font-family:Arial
+style K fill:#DDA0DD, font-size:24px, font-family:Arial
 ```
 
 ---
