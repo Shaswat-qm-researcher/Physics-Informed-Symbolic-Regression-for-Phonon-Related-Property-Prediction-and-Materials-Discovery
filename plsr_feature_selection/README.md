@@ -36,7 +36,7 @@ flowchart TD
     J --> K[Generate Visualizations]
     K --> L[results/ - Export Results]
     L --> M{More Properties?}
-    M -->|Yes| D
+    B -->|Yes| D
     M -->|No| N[End: Review Results]
     
     K --> K1[Component Analysis Plot]
