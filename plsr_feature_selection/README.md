@@ -44,7 +44,7 @@ flowchart TD
     K --> K3[Feature Contribution Plot]
     
     L --> L1[Excel Files - Performance Metrics]
-    L --> L2[PDF Figures - Publication Quality]
+    L --> L2[PDF Figures]
 
 style A fill:#90EE90, font-size:24px, font-family:Arial
 style B fill:#87CEEB, font-size:24px, font-family:Arial
