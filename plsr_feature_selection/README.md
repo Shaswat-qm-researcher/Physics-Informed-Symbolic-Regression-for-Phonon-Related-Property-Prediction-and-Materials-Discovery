@@ -61,6 +61,8 @@ style K1 font-size:24px, font-family:Arial
 style K2 font-size:24px, font-family:Arial
 style K3 font-size:24px, font-family:Arial
 style L fill:#FFA500, font-size:24px, font-family:Arial
+style L1 font-size:24px, font-family:Arial
+style L2 font-size:24px, font-family:Arial
 style M font-size:24px, font-family:Arial
 style N fill:#FFD700, font-size:24px, font-family:Arial
 ```
