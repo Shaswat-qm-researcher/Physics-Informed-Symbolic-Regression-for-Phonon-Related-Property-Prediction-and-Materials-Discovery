@@ -65,7 +65,7 @@ style L1 font-size:24px, font-family:Arial
 style L2 font-size:24px, font-family:Arial
 style M font-size:24px, font-family:Arial
 style N fill:#FFD700, font-size:24px, font-family:Arial
-linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 font-size:20px, font-family:Arial
+linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 font-size:24px, font-family:Arial
 ```
 
 ---
