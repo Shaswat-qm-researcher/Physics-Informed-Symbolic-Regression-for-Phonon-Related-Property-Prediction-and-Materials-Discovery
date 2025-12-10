@@ -146,12 +146,12 @@ graph LR
     C --> D[Load plsr_parameters.json]
     D --> E[Run Analysis]
     E --> F[../results/]
-style A fill:#FF6478, font-size:24px, font-family:Arial
+style A fill:#FF828C, font-size:24px, font-family:Arial
 style B fill:#FF828C, font-size:24px, font-family:Arial
-style C fill:#FFB6C1, font-size:24px, font-family:Arial
-style D fill:#FFB6C1, font-size:24px, font-family:Arial
-style E fill:#FFB6C1, font-size:24px, font-family:Arial
-style F fill:#FFB6C1, font-size:24px, font-family:Arial
+style C fill:#FF828C, font-size:24px, font-family:Arial
+style D fill:#FF828C, font-size:24px, font-family:Arial
+style E fill:#FF828C, font-size:24px, font-family:Arial
+style F fill:#FF828C, font-size:24px, font-family:Arial
 ```
 
 ---
