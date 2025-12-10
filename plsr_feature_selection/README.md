@@ -163,7 +163,7 @@ Configuration file: `code_and_config/plsr_parameters.json`
 ## Documentation
 
 - **[data/README.md](data/README.md)**: Dataset descriptions, feature definitions
-- **[code and config/README.md](code and config/README.md)**: Code usage, configuration
+- **[code_and_config/README.md](code_and_config/README.md)**: Code usage, configuration
 - **[results/README.md](results/README.md)**: Results structure, output files
 
 ---
