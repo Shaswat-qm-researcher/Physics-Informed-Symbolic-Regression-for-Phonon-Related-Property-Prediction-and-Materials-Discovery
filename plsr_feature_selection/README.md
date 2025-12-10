@@ -47,11 +47,19 @@ flowchart TD
     L --> L2[PDF Figures - Publication Quality]
 
 style A fill:#90EE90, font-size:24px, font-family:Arial
-style N fill:#FFD700, font-size:24px, font-family:Arial
 style B fill:#87CEEB, font-size:24px, font-family:Arial
+style C font-size:24px, font-family:Arial
 style D fill:#87CEEB, font-size:24px, font-family:Arial
-style L fill:#FFA500, font-size:24px, font-family:Arial
+style E font-size:24px, font-family:Arial
+style F font-size:24px, font-family:Arial
+style G font-size:24px, font-family:Arial
+style H font-size:24px, font-family:Arial
+style I font-size:24px, font-family:Arial
+style J font-size:24px, font-family:Arial
 style K fill:#DDA0DD, font-size:24px, font-family:Arial
+style L fill:#FFA500, font-size:24px, font-family:Arial
+style M font-size:24px, font-family:Arial
+style N fill:#FFD700, font-size:24px, font-family:Arial
 ```
 
 ---
