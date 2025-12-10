@@ -45,13 +45,13 @@ flowchart TD
     
     L --> L1[Excel Files - Performance Metrics]
     L --> L2[PDF Figures - Publication Quality]
-    
-    style A fill:#90EE90
-    style N fill:#FFD700
-    style B fill:#87CEEB
-    style D fill:#87CEEB
-    style L fill:#FFA500
-    style K fill:#DDA0DD
+
+style A fill:#90EE90, font-size:20px
+style N fill:#FFD700, font-size:20px
+style B fill:#87CEEB, font-size:18px
+style D fill:#87CEEB, font-size:18px
+style L fill:#FFA500, font-size:18px
+style K fill:#DDA0DD, font-size:18px
 ```
 
 ---
