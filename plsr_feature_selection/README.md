@@ -56,7 +56,7 @@ style G font-size:24px, font-family:Arial
 style H font-size:24px, font-family:Arial
 style I font-size:24px, font-family:Arial
 style J font-size:24px, font-family:Arial
-style K fill:#DDAD0D, font-size:24px, font-family:Arial
+style K fill:#DDA0DD, font-size:24px, font-family:Arial
 style K1 font-size:24px, font-family:Arial
 style K2 font-size:24px, font-family:Arial
 style K3 font-size:24px, font-family:Arial
