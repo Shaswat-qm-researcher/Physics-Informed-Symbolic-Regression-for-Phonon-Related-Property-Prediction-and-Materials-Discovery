@@ -48,7 +48,7 @@ flowchart TD
 
 style A fill:#90EE90, font-size:24px, font-family:Arial
 style B fill:#87CEEB, font-size:24px, font-family:Arial
-style C fill:#FFFFFF, font-size:24px, font-family:Arial
+style C font-size:24px, font-family:Arial
 style D fill:#87CEEB, font-size:24px, font-family:Arial
 style E font-size:24px, font-family:Arial
 style F font-size:24px, font-family:Arial
