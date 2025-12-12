@@ -46,7 +46,7 @@ flowchart TD
     L --> L1[Excel Files - Performance Metrics]
     L --> L2[PDF Figures]
 
-style A fill:#90EE90, font-size:24px, font-family:Arial
+style A fill:#FFD700, font-size:24px, font-family:Arial
 style B fill:#87CEEB, font-size:24px, font-family:Arial
 style C font-size:24px, font-family:Arial
 style D fill:#87CEEB, font-size:24px, font-family:Arial
