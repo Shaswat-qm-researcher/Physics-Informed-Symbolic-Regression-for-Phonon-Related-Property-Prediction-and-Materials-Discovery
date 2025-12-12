@@ -48,7 +48,7 @@ flowchart TD
 
 style A fill:#90EE90, font-size:24px, font-family:Arial
 style B fill:#87CEEB, font-size:24px, font-family:Arial
-style C font-size:24px, font-family:Arial
+style C fill:#FFFFFF, font-size:24px, font-family:Arial
 style D fill:#87CEEB, font-size:24px, font-family:Arial
 style E font-size:24px, font-family:Arial
 style F font-size:24px, font-family:Arial
@@ -63,9 +63,9 @@ style K3 font-size:24px, font-family:Arial
 style L fill:#FFA500, font-size:24px, font-family:Arial
 style L1 font-size:24px, font-family:Arial
 style L2 font-size:24px, font-family:Arial
-style M font-size:24px, font-family:Arial
+style M fill:#FFFFFF, font-size:24px, font-family:Arial
 style N fill:#FFD700, font-size:24px, font-family:Arial
-linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 fill:#FFFFFF, font-size:24px, font-family:Arial
+linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 font-size:24px, font-family:Arial
 ```
 
 ---
