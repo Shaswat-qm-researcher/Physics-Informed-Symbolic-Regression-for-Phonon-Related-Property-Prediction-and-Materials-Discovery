@@ -21,7 +21,7 @@ where $r_{xy} \in [-1, 1]$:
 - $r = -1$: Perfect negative correlation
 
 > **Note:** This is a sub-repository of the main project:  
-> **[Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-Materials-Discovery](https://github.com/yourusername/Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-Materials-Discovery)**
+> **[Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-Materials-Discovery]([https://github.com/yourusername/Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-Materials-Discovery])**
 
 ---
 
