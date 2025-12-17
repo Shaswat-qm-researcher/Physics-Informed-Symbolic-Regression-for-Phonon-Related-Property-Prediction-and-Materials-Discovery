@@ -231,4 +231,4 @@ MIT License - See LICENSE file for details
 - **AFLOW Consortium** for high-throughput materials data
 - The open-source Python community for excellent scientific computing libraries
 
-**Last Updated**: 08-12-2025
+**Last Updated**: 17-12-2025
