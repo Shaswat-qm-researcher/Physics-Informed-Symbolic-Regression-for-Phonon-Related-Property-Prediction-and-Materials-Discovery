@@ -10,6 +10,7 @@ A Python tool for generating Pearson correlation matrices from materials science
 ## Overview
 
 This tool provides an interactive command-line interface for analyzing Pearson correlations between materials properties and visualizing them as heatmaps with LaTeX-formatted labels. It automates the workflow from data loading to high-resolution figure export, supporting both Excel and CSV formats.
+
 **Pearson Correlation Coefficient:**
 
 $$r_{xy} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2}\sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}}$$
