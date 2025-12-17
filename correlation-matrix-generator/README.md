@@ -17,7 +17,7 @@ $$r_{xy} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 
 where $r_{xy} \in [-1, 1]$:
 - $r = +1$: Perfect positive correlation
-- $r = 0$: No linear correlation  
+- $r =  0$: No linear correlation  
 - $r = -1$: Perfect negative correlation
 
 > **Note:** This is a sub-repository of the main project:  
