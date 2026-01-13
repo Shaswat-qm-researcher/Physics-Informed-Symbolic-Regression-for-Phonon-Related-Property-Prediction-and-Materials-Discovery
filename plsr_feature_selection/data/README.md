@@ -1,12 +1,12 @@
 # PLSR Feature Selection - Data Directory
 
-## 📋 Overview
+## Overview
 
 This directory contains input data for **Partial Least Squares Regression (PLSR)** analysis to identify the most influential physical descriptors for predicting **Debye temperature ($Θ_D$)** and related thermodynamic and transport properties.
 
 ---
 
-## 📂 Files Description
+## Files Description
 
 ### **1. Training Data Files**
 
@@ -61,7 +61,7 @@ This directory contains input data for **Partial Least Squares Regression (PLSR)
 
 ---
 
-## 🗂️ Database Differences
+## Database Differences
 
 | Feature | Materials Project | AFLOW | Notes |
 |---------|-------------------|-------|-------|
