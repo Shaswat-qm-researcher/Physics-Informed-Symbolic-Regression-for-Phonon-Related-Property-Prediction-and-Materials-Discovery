@@ -34,8 +34,8 @@ This directory contains input data for **Partial Least Squares Regression (PLSR)
   - **Electronic**: `BGAP`, `EPA`, `ASPIN`, `ENPA`
   - **Mechanical**: `BM`, `SM`, `YM`, `ANI`, `PR`, `PUGR`, `IPUGR`
   - **Vibrational**: `DT_AGL`, `vs`, `vl`, `vm`, `DT_A_AGL`
-  - **Thermodynamic** (300K): `gruneisen`, `Cv_300`, `Cp_300`, `TEX_300`, `TC_300`
-  - **Advanced**: `VIB_EN_300`, `VIB_FE_300`
+  - **Thermodynamic** (300K): `gruneisen`, `Cv_300`, `Cp_300`, `TEX_300`, `VIB_EN_300`, `VIB_FE_300`
+  - **Transport**: `TC_300`, `TEX_300`,
 
 
 ### **2. Metadata Files**
