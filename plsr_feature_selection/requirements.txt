@@ -1,4 +1,4 @@
-# PLSR Feature Selection - Python Dependencies
+# PLS Feature Selection - Python Dependencies
 # Compatible with Python 3.12+
 # Last Updated: 08-12-2025
 

@@ -1,6 +1,6 @@
-# Results - PLSR Feature Selection Output
+# Results - PLS Feature Selection Output
 
-This folder contains all output files from PLSR feature selection analyses, including Excel reports and figures.
+This folder contains all output files from PLS regression feature selection analyses, including Excel reports and figures.
 
 ---
 
@@ -10,140 +10,159 @@ This folder contains all output files from PLSR feature selection analyses, incl
 results/
 │
 ├── excel_data_files/             # Performance metrics & selected features
-│   ├── acoustic_debye_temperature_results.xlsx
-│   ├── Cp_300K_results.xlsx
+│   ├── Cp_300K_AFLOW_results.xlsx
+│   ├── Debye_temperature_AFLOW_results.xlsx
 │   ├── Debye_temperature_MP_results.xlsx
-│   ├── thermal_conductivity_300K_results.xlsx
-│   ├── thermal_conductivity_with_gamma_results.xlsx
-│   ├── thermal_expansion_300K_results.xlsx
-│   └── thermal_expansion_with_gamma_results.xlsx
-│
-└── figures/                     # Plots 
-# (1.pls component analysis, 2.loading heatmaps, and 3.feature contributions)
+│   ├── thermal_conductivity_300K_AFLOW_results.xlsx
+|
+└── figures/      # Plots # (1.pls component analysis, 2.loading heatmaps, and 3.feature contributions)
     ├── Debye_temperature/
-    ├── Debye_temperature_acoustic/
     ├── Specific_heat_at_constant_pressure/
     ├── Thermal_conductivity/
-    └── Thermal_expansion/
 ```
 
 ---
 
-## Excel Files Structure
+## Excel File Structure
 
-Each Excel file contains **4 sheets** with comprehensive analysis results:
-
-### Sheet 1: PLS_Summary
-
-Component-wise performance metrics.
-
-| Column | Description |
-|--------|-------------|
-| `PLS_Component` | Component identifier (PLS1, PLS2, ...) |
-| `Incremental_R2` | ΔR² contribution of each component |
-| `Normalized_Covariance` | Normalized covariance with target property |
-
-**Example:**
-```
-PLS_Component | Incremental_R2 | Normalized_Covariance
-PLS1          | 0.7392         | 1.0000
-PLS2          | 0.0711         | 0.1889
-PLS3          | 0.0584         | 0.1465
-```
+Each Excel file contains **5 sheets** with comprehensive analysis results:
 
 ---
 
-### Sheet 2: Selected_Features
+### Sheet 1: Metadata_and_Grid_Search
 
-Ranked features with cumulative performance.
+Two sections in one sheet: analysis configuration at the top, followed by the full grid search cross-validation results table below.
 
-| Column | Description |
-|--------|-------------|
-| `Rank` | Feature importance ranking (1 = most important) |
-| `Feature_Name` | Descriptor name (e.g., SM, YM, VPA, D) |
-| `Cumulative_R2` | R² with features 1 through current rank |
-| `Delta_R2` | Incremental R² contribution of this feature |
-
-**Example:**
-```
-Rank | Feature_Name | Cumulative_R2 | Delta_R2
-1    | SM           | 0.6500        | 0.6500
-2    | YM           | 0.6944        | 0.0444
-3    | VPA          | 0.7584        | 0.0640
-4    | D            | 0.9000        | 0.1416
-```
-
----
-
-### Sheet 3: PLS_Loadings
-
-Complete loading matrix showing feature contributions to each component.
-
-**Format:**
-- Rows: Input features
-- Columns: PLS components (PLS1, PLS2, ...)
-- Values: Loading weights (-1 to +1)
-
----
-
-### Sheet 4: Metadata
-
-Analysis configuration and performance metrics.
+**Metadata section:**
 
 | Parameter | Description |
 |-----------|-------------|
-| `Output_Variable` | Target property (DT, Cp_300, etc.) |
-| `Num_Components` | Number of PLS components used |
-| `Loading_Threshold` | Min \|L\| for feature selection |
-| `ΔR²_Threshold` | Min ΔR² for component significance |
-| `Num_Selected_Features` | Count of selected features |
-| `Best_CV_R²_Score` | Cross-validated R² |
-| `Best_CV_RMSE` | Cross-validated RMSE (original scale) |
-| `GridSearch_max_iter` | Optimized max iterations |
-| `GridSearch_tol` | Optimized tolerance |
+| `Output Variable` | Target property name |
+| `Num Components` | Number of PLS components used |
+| `Loading Threshold` | Min \|loading\| for feature selection |
+| `Delta R2 Threshold` | Min ΔR² for component significance |
+| `Num Selected Features` | Count of selected features |
+| `Best CV R2 Score` | Cross-validated R² (scaled) |
+| `Best CV RMSE (orig units)` | Cross-validated RMSE in original units |
+| `GridSearch max_iter` | Optimized max iterations |
+| `GridSearch tol` | Optimized tolerance |
+
+**Grid Search CV Results table** (appended below metadata):
+
+Includes all parameter combinations tested, with columns for `rank_test_RMSE`, `mean_test_RMSE`, `std_test_RMSE`, `mean_test_R2`, `std_test_R2`, `mean_train_RMSE`, `mean_train_R2`, overfitting gap metrics (`overfit_gap_R2`, `overfit_gap_RMSE`), and fit/score timing. The best-performing row is highlighted in green.
+
+---
+
+### Sheet 2: PLS Component Summary
+
+Component-wise performance and selection status.
+
+| Column | Description |
+|--------|-------------|
+| `PLS Component` | Component identifier (PLS1, PLS2, ...) |
+| `Incremental R2` | ΔR² contribution of each component |
+| `Normalized Covariance` | Normalized \|covariance\| with target property |
+| `Selected Component` | Whether this component passed the ΔR² threshold (Yes/No) |
+
+**Example:**
+```
+PLS Component | Incremental R2 | Normalized Covariance | Selected Component
+PLS1          | 0.7392         | 1.0000                | Yes
+PLS2          | 0.0711         | 0.1889                | Yes
+PLS3          | 0.0584         | 0.1465                | No
+```
+
+---
+
+### Sheet 3: PLS Loadings (All)
+
+Complete loading matrix for **all** PLS components.
+
+**Format:**
+- Rows: Input features
+- Columns: `Feature` + all PLS components (PLS1, PLS2, ...)
+- Values: Loading weights (approximately −1 to +1)
+
+---
+
+### Sheet 4: PLS Loadings (Selected)
+
+Loading matrix restricted to **selected components only** (those passing the ΔR² threshold). This matches exactly what is shown in Plot 2.
+
+**Format:**
+- Rows: Input features
+- Columns: `Feature` + selected PLS components only
+- Values: Loading weights (approximately −1 to +1)
+
+---
+
+### Sheet 5: NLR Feature Selection
+
+Ranked features with cumulative performance from the nested linear regression (NLR) step.
+
+| Column | Description |
+|--------|-------------|
+| `PLS Rank` | Feature importance ranking (1 = most important) |
+| `Feature Name` | Descriptor name (e.g., SM, YM, VPA, D) |
+| `NLR Cumulative R2` | R² with features 1 through current rank |
+| `NLR Delta R2` | Incremental R² contribution of this feature |
+
+**Example:**
+```
+PLS Rank | Feature Name | NLR Cumulative R2 | NLR Delta R2
+1        | SM           | 0.6500            | 0.6500
+2        | YM           | 0.6944            | 0.0444
+3        | VPA          | 0.7584            | 0.0640
+4        | D            | 0.9000            | 0.1416
+```
 
 ---
 
 ## Figure Files
 
-Each property folder contains **3 high-resolution PDF plots** (800 DPI):
+Each property folder contains **3 high-resolution PDF plots** (600 DPI), * = user defined name:
 
 ### Plot 1: Component Analysis
-`*_pls_component_analysis.pdf`
+`*_1_pls_component_analysis.pdf`
 
 **Shows:**
 - Bar chart of incremental R² per component (left y-axis, red)
-- Bar chart of normalized covariance with target (right y-axis, blue)
+- Bar chart of normalized \|covariance\| with target (right y-axis, blue)
+- Components selected by the ΔR² threshold are marked with ★ and bolded on the x-axis
 
 **Interpretation:**
 - High incremental R²: Component captures significant variance
 - High covariance: Strong linear relationship with target
+- ★ markers indicate which components were used for feature selection
 
 ---
 
 ### Plot 2: Loading Heatmap
-`*_loading_heatmap.pdf`
+`*_2_loading_heatmap.pdf`
 
 **Shows:**
-- Heatmap of PLS loading matrix
-- Features (rows) × Components (columns)
-- Color scale: Red (negative) → White (zero) → Blue (positive)
+- Heatmap of PLS loadings for **selected components only** (not all components)
+- Features (rows) × selected components (columns)
+- Color scale: Red (negative) → White (zero) → Blue (positive), seismic colormap
 - Numerical values overlaid on each cell
+- Subtitle states how many components are shown vs. total
 
 **Interpretation:**
-- |Loading| > 0.10: Feature significantly contributes to component
-- Sign indicates direction of relationship
+- \|Loading\| > threshold: Feature significantly contributes to that component
+- Sign indicates direction of relationship with the target
+- Full loadings for all components are available in Sheet 3 of the Excel file
 
 ---
 
 ### Plot 3: Feature Contribution
-`*_feature_contributions.pdf`
+`*_3_feature_contributions.pdf`
 
 **Shows:**
-- Line plot: Cumulative R² vs. number of features
-- Scatter points: Color-coded by R² value
+- Line plot: Cumulative R² vs. number of features (left y-axis)
+- Scatter points: Color-coded by cumulative R² value using the jet colormap
 - Bar chart: ΔR² for each feature addition (right y-axis, gray)
-- Legend: Sequential feature addition order
+- Color bar: Maps point colors to R² values
+- Legend (left of plot): Sequential feature addition order with symbols if provided
 
 **Interpretation:**
 - Steep initial rise: First few features capture most variance
@@ -151,18 +170,21 @@ Each property folder contains **3 high-resolution PDF plots** (800 DPI):
 - Large ΔR² bars: Features add new information
 
 ---
+
 ## Reproducing Results
 
 ### Step 1: Verify Input Data
 ```bash
 # Check data files exist
-ls ../data/PLRS_training_data_*.xlsx
+ls ../data/*_cleaned_dataset.csv
+* = MP/AFLOW
 ```
 
 ### Step 2: Run Analysis
 ```bash
 # Open Jupyter notebook
-jupyter notebook ../code_and_config/PLSR_analysis.ipynb
+jupyter notebook ../code_and_config/setup_environment.ipynb
+jupyter notebook ../code_and_config/PLS_analysis.ipynb
 
 # Follow prompts:
 # - Load data file
@@ -177,18 +199,16 @@ jupyter notebook ../code_and_config/PLSR_analysis.ipynb
 # - Same R² values (within 0.001)
 # - Same selected features
 # - Same feature rankings
-
-# Figures should be visually identical
 ```
 
 ---
 
 
 
-## Important Notes
+## Notes
 
 1. **Reproducibility**: Minor variations (<0.001 in R²) may occur due to random state in cross-validation
-2. **Units**: All values in Excel are in original physical units (see data/README.md)
+2. **Units**: All values in INPUT CSV file are in original physical units (see data/README.md)
 3. **LaTeX Symbols**: Feature names in figures use LaTeX formatting for scientific notations
 
 ---

@@ -1,10 +1,19 @@
 {
   "metadata": {
-    "description": "Comprehensive feature descriptions for PLSR-based feature selection",
-    "total_features": 30,
+    "description": "Comprehensive feature descriptions for PLS-based feature selection",
     "databases": ["Materials Project", "AFLOW"],
-    "target_property": ["Debye Temperature (DT)", "Acoustic Debye Temperature (DT_A_AGL)", "Heat Capacity at Constant Pressure (Cp_300)", "Thermal Expansion Coefficient (TEX_300)", "Thermal Conductivity (TC_300)"],
-    "note": "ID and formula columns must be dropped before PLSR training"
+    "total_unique_features": 36,
+    "total_useful_features": 33,
+    "structural_features": 5,
+    "electronic_features": 5,
+    "magnetic_features": 3,
+    "mechanical_features": 7,
+    "vibrational/transport_features": 4,
+    "thermodynamic_(MP/AFLOW)": 8,
+    "used_input_properties": 20,
+    "predicted_target_properties": 3,
+    "target_property": ["Debye Temperature (DT/DT_AGL)", "Heat Capacity at Constant Pressure (Cp_300)", "Thermal Conductivity (TC_300)"],
+    "note": "ID and formula columns must be dropped before PLS training"
   },
   
   "identifier_columns": {
@@ -63,7 +72,6 @@
       "type": "float",
       "physical_significance": "Interatomic distance indicator - inversely related to bond strength and phonon frequencies (Θ_D ∝ V_atom^(-1/3))",
       "example": 10.95,
-      "plsr_importance": "HIGH - Primary predictor selected by PLSR"
     },
     "D": {
       "full_name": "Mass Density",
@@ -72,8 +80,7 @@
       "type": "float",
       "physical_significance": "Inertial mass in phonon frequencies (ω ∝ ρ^(-1/2)), affects sound velocity (v ∝ ρ^(-1/2))",
       "example": 2.95,
-      "plsr_importance": "HIGH - Primary predictor selected by PLSR"
-    }
+      }
   },
 
   "electronic_features": {
@@ -154,7 +161,6 @@
       "type": "float",
       "physical_significance": "Controls longitudinal sound velocity (v_l ∝ √(B/ρ)), related to Debye temperature through acoustic phonon branches",
       "example": 72.68,
-      "plsr_importance": "MEDIUM - Correlated with shear modulus (multicollinearity)"
     },
     "SM": {
       "full_name": "Shear Modulus (Voigt-Reuss-Hill)",
@@ -163,7 +169,6 @@
       "type": "float",
       "physical_significance": "Controls transverse sound velocity (v_t ∝ √(G/ρ)), DOMINANT role in Θ_D (SISSO: Θ_D ∝ G^1)",
       "example": 39.17,
-      "plsr_importance": "VERY HIGH - Top predictor, explains ~65% variance alone"
     },
     "YM": {
       "full_name": "Young's Modulus (Voigt-Reuss-Hill)",
@@ -172,7 +177,6 @@
       "type": "float",
       "physical_significance": "Related to average elastic stiffness, linked to mean sound velocity (SISSO: Θ_D ∝ E^(1/2))",
       "example": 99.66,
-      "plsr_importance": "HIGH - Secondary predictor selected by PLSR"
     },
     "PR": {
       "full_name": "Poisson's Ratio",
@@ -181,7 +185,6 @@
       "type": "float",
       "physical_significance": "Bonding character indicator (covalent: ~0.1-0.25, metallic: ~0.3-0.4), relates to v_l/v_t ratio",
       "example": 0.27,
-      "plsr_importance": "LOW - Redundant with G and B (ν = (3B-2G)/(6B+2G))"
     },
     "PUGR": {
       "full_name": "Pugh's Ratio",
@@ -190,7 +193,6 @@
       "type": "float",
       "physical_significance": "Brittleness criterion: G/B>0.57 (brittle), G/B<0.57 (ductile); correlates with anharmonicity",
       "example": 0.54,
-      "plsr_importance": "LOW - Derived from G and B (redundant)"
     },
     "IPUGR": {
       "full_name": "Inverse Pugh's Ratio",
@@ -199,7 +201,6 @@
       "type": "float",
       "physical_significance": "Ductility indicator - inverse of PUGR",
       "example": 1.86,
-      "plsr_importance": "LOW - Mathematically redundant with PUGR"
     },
     "ANI": {
       "full_name": "Elastic Anisotropy",
@@ -208,37 +209,6 @@
       "type": "float",
       "physical_significance": "Anisotropy in phonon group velocities - affects thermal conductivity directionality",
       "example": 0.5,
-      "plsr_importance": "LOW - Secondary effect on averaged Θ_D"
-    }
-  },
-
-  "target_properties": {
-    "DT": {
-      "full_name": "Debye Temperature",
-      "description": "Characteristic temperature marking transition from quantum to classical lattice behavior (ℏω_max = k_B Θ_D)",
-      "unit": "K",
-      "type": "float",
-      "physical_significance": "PRIMARY TARGET - Maximum phonon frequency cutoff, determines low-T heat capacity (C_v ∝ T³ for T<<Θ_D), thermal conductivity scaling (κ ∝ Θ_D³), and vibrational entropy",
-      "example": 547.94,
-      "calculation_method": "DFT phonon dispersion from Materials Project"
-    },
-    "DT_AGL": {
-      "full_name": "Debye Temperature (AGL Method)",
-      "description": "Debye temperature calculated using Automatic Gibbs Library quasi-harmonic approximation",
-      "unit": "K",
-      "type": "float",
-      "physical_significance": "PRIMARY TARGET - Same as DT but calculated with QHA including thermal expansion effects",
-      "example": 469.05,
-      "calculation_method": "AGL quasi-harmonic approximation from AFLOW"
-    },
-    "DT_A_AGL": {
-      "full_name": "Acoustic Debye Temperature (AGL)",
-      "description": "Low-frequency acoustic phonon branch contribution to Debye temperature",
-      "unit": "K",
-      "type": "float",
-      "physical_significance": "SECONDARY TARGET - Acoustic mode limit, dominates low-T thermal transport",
-      "example": 295.45,
-      "calculation_method": "AGL approximation focusing on acoustic branches"
     }
   },
 
@@ -250,7 +220,6 @@
       "type": "float",
       "physical_significance": "Related to transverse acoustic phonon group velocity - two degenerate modes",
       "example": 3724.75,
-      "plsr_importance": "LOW - Derived from G and ρ (already included as features)"
     },
     "vl": {
       "full_name": "Longitudinal Speed of Sound",
@@ -259,7 +228,6 @@
       "type": "float",
       "physical_significance": "Related to longitudinal acoustic phonon group velocity - one mode",
       "example": 6651.19,
-      "plsr_importance": "LOW - Derived from B, G, and ρ (redundant)"
     },
     "vm": {
       "full_name": "Average Speed of Sound",
@@ -268,7 +236,6 @@
       "type": "float",
       "physical_significance": "Directly proportional to Debye temperature in classical theory (Θ_D ∝ v_m)",
       "example": 4145.81,
-      "plsr_importance": "LOW - Can be calculated from elastic moduli and density"
     },
     "gruneisen": {
       "full_name": "Grüneisen Parameter",
@@ -277,11 +244,37 @@
       "type": "float",
       "physical_significance": "Controls thermal expansion (α ∝ γC_v/BV) and thermal conductivity (κ ∝ 1/γ²) - essential for predicting α and κ",
       "example": 1.97,
-      "plsr_importance": "CRITICAL for α and κ predictions (anharmonic properties)"
     }
   },
 
-  "thermodynamic_features_aflow": {
+  "thermodynamic_features_MP/aflow": {
+      "DT": {
+      "full_name": "Debye Temperature",
+      "description": "Characteristic temperature marking transition from quantum to classical lattice behavior (ℏω_max = k_B Θ_D)",
+      "unit": "K",
+      "type": "float",
+      "physical_significance": "PRIMARY TARGET - Maximum phonon frequency cutoff, determines low-T heat capacity (C_v ∝ T³ for T<<Θ_D), thermal conductivity scaling (κ ∝ Θ_D³), and vibrational entropy",
+      "example": 547.94,
+      "calculation_method": "DFPT phonon DOS from Materials Project"
+    },
+    "DT_AGL": {
+      "full_name": "Debye Temperature (AGL Method)",
+      "description": "Debye temperature calculated using Automatic Gibbs Library quasi-harmonic approximation",
+      "unit": "K",
+      "type": "float",
+      "physical_significance": "PRIMARY TARGET - Same as DT but calculated with QHA including thermal expansion effects",
+      "example": 469.05,
+      "calculation_method": "AGL quasi-harmonic Debye approximation from AFLOW"
+    },
+    "DT_A_AGL": {
+      "full_name": "Acoustic Debye Temperature (AGL)",
+      "description": "Low-frequency acoustic phonon branch contribution to Debye temperature",
+      "unit": "K",
+      "type": "float",
+      "physical_significance": "Acoustic mode limit, dominates low-T thermal transport",
+      "example": 295.45,
+      "calculation_method": "AGL approximation focusing on acoustic branches"
+    },
     "Cv_300": {
       "full_name": "Heat Capacity at Constant Volume (300K)",
       "description": "Lattice vibrational contribution to heat capacity at fixed volume",
@@ -305,7 +298,7 @@
       "description": "Volumetric thermal expansion rate (α = (1/V)(∂V/∂T)_P)",
       "unit": "K⁻¹",
       "type": "float",
-      "physical_significance": "SECONDARY TARGET - Anharmonic property: α ∝ γC_v/(BV), measures lattice expansion with temperature",
+      "physical_significance": "Anharmonic property: α ∝ γC_v/(BV), measures lattice expansion with temperature",
       "example": 2.77e-5,
       "note": "AFLOW database only"
     },
@@ -347,9 +340,8 @@
       "5. Optional: Remove outliers (>3σ) for robust training"
     ],
     "critical_warnings": [
-      "⚠️ MUST DROP 'MP_ID'/'auid' and 'formula' before PLSR training",
+      "⚠️ MUST DROP 'MP_ID'/'auid' and 'formula' before PLS training",
       "⚠️ Features like vs, vl, vm are derived from BM, SM, D - creates multicollinearity",
-      "⚠️ PUGR and IPUGR are mathematically inverse - include only one",
       "⚠️ Materials Project and AFLOW have different column names - harmonize before merging"
     ],
     "database_differences": {

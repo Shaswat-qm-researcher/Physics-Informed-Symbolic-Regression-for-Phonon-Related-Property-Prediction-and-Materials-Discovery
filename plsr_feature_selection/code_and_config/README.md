@@ -1,21 +1,21 @@
 # Code and Configuration
 
-This folder contains all analysis scripts, configuration files, and environment setup tools for the PLSR feature selection framework.
+This folder contains all analysis scripts, configuration files, and environment setup tools for the PLS feature selection framework.
 
 ---
 
 ## Contents
 
-### 1. PLSR_analysis.ipynb
+### 1. PLS_analysis.ipynb
 
-Main analysis notebook for complete PLSR feature selection workflow.
+Main analysis notebook for complete PLS feature selection workflow.
 
 **Workflow Steps:**
 
-1. Data Loading: Load Excel files from `../data/`
-2. Configuration: Set PLSR parameters interactively
+1. Data Loading: Load CSV/Excel files from `../data/`
+2. Configuration: Set PLS parameters interactively
 3. Feature Standardization: Apply StandardScaler (μ=0, σ=1)
-4. PLSR Training: Fit model with GridSearchCV optimization
+4. PLS Training: Fit model with GridSearchCV optimization
 5. Feature Selection: Identify top features based on loadings
 6. Visualization: Generate 3 plots
 7. Export: Save results to `../results/`
@@ -24,10 +24,10 @@ Main analysis notebook for complete PLSR feature selection workflow.
 
 ```bash
 # Standard Jupyter
-jupyter notebook PLSR_analysis.ipynb
+jupyter notebook PLS_analysis.ipynb
 
 # JupyterLab
-jupyter lab PLSR_analysis.ipynb
+jupyter lab PLS_analysis.ipynb
 
 # VS Code
 # Open in VS Code and select kernel
@@ -35,16 +35,16 @@ jupyter lab PLSR_analysis.ipynb
 
 **Interactive Prompts:**
 
-- File path: Location of input Excel file
-- Input columns: Features for PLSR (comma-separated)
-- Output column: Target property (Θ_D, C_p, α, κ)
-- LaTeX name: Scientific notations (e.g., `$\Theta_D$`)
+- File path: Location of input CSV/Excel file
+- Input columns: Features for PLS (comma-separated)
+- Output column: Target property (Θ_D, C_p, κ)
+- LaTeX text file: File `symbol_conversion.txt` containing information about excel coloums headers, scientific notations. 
 - Parameters: `n_components`, `loading_threshold`, `incremental_r2_threshold`
 - Save path: Output directory for results
 
 ---
 
-### 2. plsr_parameters.json
+### 2. pls_parameters.json
 
 Configuration file containing all default parameters and property-specific configurations.
 
@@ -101,7 +101,7 @@ Choose setup option:
 
 Enter choice (1-5): 1
 
-Creating conda environment 'plsr_env'...
+Creating conda environment 'pls_env'...
 ✓ Success
 
 Installing packages...
@@ -111,7 +111,7 @@ Installing packages...
 ✓ All packages installed!
 
 To activate:
-  conda activate plsr_env
+  conda activate pls_env
   jupyter notebook
 ```
 
@@ -119,7 +119,7 @@ To activate:
 
 ## Configuration Guide
 
-### PLSR Parameters
+### PLS Parameters
 
 | Parameter | Default | Range | Effect |
 |-----------|---------|-------|--------|
@@ -142,8 +142,8 @@ To activate:
 ```mermaid
 graph LR
     A[setup_environment.py] --> B[Environment Ready]
-    B --> C[PLSR_analysis.ipynb]
-    C --> D[Load plsr_parameters.json]
+    B --> C[PLS_analysis.ipynb]
+    C --> D[Load pls_parameters.json]
     D --> E[Run Analysis]
     E --> F[../results/]
 style A fill:#FF828C, font-size:24px, font-family:Arial
@@ -179,7 +179,7 @@ ipykernel
 
 **Solution:**
 ```bash
-python -m ipykernel install --user --name plsr_env
+python -m ipykernel install --user --name pls_env
 ```
 
 ### Issue: Import errors in notebook
@@ -195,6 +195,6 @@ python -m ipykernel install --user --name plsr_env
 **Solution:**
 1. Open Command Palette (Ctrl+Shift+P)
 2. Select "Python: Select Interpreter"
-3. Choose the plsr_env interpreter
+3. Choose the pls_env interpreter
 
 ---

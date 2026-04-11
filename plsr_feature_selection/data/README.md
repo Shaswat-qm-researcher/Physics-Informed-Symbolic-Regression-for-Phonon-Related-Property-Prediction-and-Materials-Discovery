@@ -1,8 +1,8 @@
-# PLSR Feature Selection - Data Directory
+# PLS Feature Selection - Data Directory
 
 ## Overview
 
-This directory contains input data for **Partial Least Squares Regression (PLSR)** analysis to identify the most influential physical descriptors for predicting **Debye temperature ($Θ_D$)** and related thermodynamic and transport properties.
+This directory contains input data for **Partial Least Squares Regression (PLS)** analysis to identify the most influential physical descriptors for predicting **Debye temperature ($Θ_D$)** and related thermodynamic and transport properties.
 
 ---
 
@@ -10,7 +10,7 @@ This directory contains input data for **Partial Least Squares Regression (PLSR)
 
 ### **1. Training Data Files**
 
-#### **PLRS_training_data_MP.xlsx**
+#### **MP_cleaned_dataset.csv**
 - **Source**: Materials Project Database
 - **Materials Count**: 6,433 crystalline compounds
 - **ID Column**: `MP_ID` (e.g., `mp-24390`)
@@ -23,7 +23,7 @@ This directory contains input data for **Partial Least Squares Regression (PLSR)
   - **Mechanical**: `BM`, `SM`, `YM`, `PR`, `PUGR`, `IPUGR`
   - **Vibrational**: `DT`, `vs`, `vl`, `vm`
 
-#### **PLRS_training_data_AFLOW.xlsx**
+#### **AFLOW_cleaned_dataset.csv**
 - **Source**: AFLOW Consortium Database
 - **Materials Count**: 5,154 crystalline compounds
 - **ID Column**: `auid` (e.g., `aflow:001a4bbb607a30b0`)
@@ -38,18 +38,15 @@ This directory contains input data for **Partial Least Squares Regression (PLSR)
   - **Transport**: `TC_300`, `TEX_300`,
 
 
-### **2. Metadata Files**
+### **2. Metadata File**
 
 #### **feature_descriptions.json**
 - Comprehensive documentation of all 30+ features
-- Physical significance and units
-- PLSR importance rankings
-- Usage guidelines and warnings
-- See full file above for complete details
-
-#### **feature_metadata.json**
 - Simple lookup table: `{feature_name: {unit, example, type}}`
+- Physical significance and units
+- Usage guidelines and warnings
 - Used programmatically for validation and plotting
+- See full file above for complete details
 
 ---
 
@@ -67,15 +64,17 @@ This directory contains input data for **Partial Least Squares Regression (PLSR)
 |---------|-------------------|-------|-------|
 | **ID Column** | `MP_ID` | `auid` | Both must be dropped |
 | **Formula** | `formula` | `formula` | Both must be dropped |
-| **Debye Temp** | `DT` | `DT_AGL` | Target variable |
+| **Debye Temp** | `DT` | `DT_AGL` | Primary Target variable |
 | **Fermi Energy** | `EFMR` | ❌ | MP-only |
 | **Magnetization** | `TM` | `ASPIN` | Different conventions |
 | **Magnetic Sites** | `MSITE` | ❌ | MP-only |
 | **Cell Volume** | `V` | ❌ | MP-only (can derive from VPA×NA) |
 | **Anisotropy** | ❌ | `ANI` | AFLOW-only |
 | **Grüneisen γ** | ❌ | `gruneisen` | AFLOW-only (critical for α, κ) |
-| **Heat Capacity** | ❌ | `Cp_300` | AFLOW-only |
+| **Heat Capacity cont. Volume** | ❌ | `Cv_300` | AFLOW-only |
+| **Heat Capacity cont. Pressure** | ❌ | `Cp_300` | Secondary Target - AFLOW-only |
 | **Thermal Exp.** | ❌ | `TEX_300` | AFLOW-only |
-| **Thermal Cond.** | ❌ | `TC_300` | AFLOW-only |
-
+| **Thermal Cond.** | ❌ | `TC_300` | Secondary Target - AFLOW-only |
+| **Vibrational Free Energy** | ❌ | `VIB_FE_300` | AFLOW-only |
+| **Vibrational Entropy** | ❌ | `VIB_EN_300` | AFLOW-only |
 ---

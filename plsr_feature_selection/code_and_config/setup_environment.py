@@ -1,5 +1,5 @@
 """
-Environment Setup Script for PLSR Feature Selection
+Environment Setup Script for PLS Feature Selection
 
 Compatible with:
 - Google Colab

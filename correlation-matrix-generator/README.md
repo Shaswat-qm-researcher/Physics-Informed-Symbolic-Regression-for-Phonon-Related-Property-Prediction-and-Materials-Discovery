@@ -20,6 +20,8 @@ where $r_{xy} \in [-1, 1]$:
 - $r =  0$: No linear correlation  
 - $r = -1$: Perfect negative correlation
 
+📖 [Pearson, K. (1895) Philosophical Transactions of the Royal Society of London. ](https://royalsocietypublishing.org/rsta/article/doi/10.1098/rsta.1896.0007)
+
 > **Note:** This is a sub-repository of the main project:  
 > **[Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-Materials-Discovery](https://github.com/Shaswat-qm-researcher/Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-Materials-Discovery/)**
 ---
@@ -32,8 +34,7 @@ where $r_{xy} \in [-1, 1]$:
 - **Custom Labels**: Map column names to LaTeX symbols via `symbol_conversion.txt` for professional figures
 - **Dynamic Sizing**: Automatic figure dimension adjustment based on number of parameters
 - **Custom Colormap**: Beautiful gradient from dark red (negative) through white (zero) to dark blue (positive)
-- **High-Quality Output**: 800 DPI PDF exports suitable for publications
-- **Dual Export**: Saves both visualization (with LaTeX labels) and data table (with original column names)
+- **Dual Export**: Saves both visualization (with LaTeX labels) and data table (with original column names in CSV format)
 
 ---
 
@@ -42,17 +43,17 @@ where $r_{xy} \in [-1, 1]$:
 ```
 correlation-matrix-generator/
 ├── correlation_matrix_generator.ipynb # Jupyter notebook
-├── Training_data_AFLOW.xlsx          # AFLOW database training data
-├── Training_data_MP.xlsx             # Materials Project training data
+├── AFLOW_cleaned_dataset.csv          # AFLOW database training data
+├── MP_cleaned_dataset.csv             # Materials Project training data
 ├── symbol_conversion.txt             # Feature name to LaTeX symbol mapping
 ├── requirements.txt                  # Python dependencies
 ├── results/                          
 │   ├── heatmaps/                     # Correlation heatmaps
-│   │   ├── Aflow_CM.pdf             
-│   │   └── MP_CM.pdf                
+│   │   ├── Aflow_CM_matrix.pdf             
+│   │   └── MP_CM_matrix.pdf                
 │   └── matrices/                     # Correlation matrices (tabular)
-│       ├── Aflow_CM.xlsx            
-│       └── MP_CM.xlsx               
+│       ├── Aflow_CM_matrix.csv            
+│       └── MP_CM_matrix.csv               
 └── README.md                         # This file
 ```
 
@@ -109,7 +110,7 @@ jupyter notebook correlation_matrix_generator.ipynb
 - `MP_ID` (Materials Project ID)  
 - `formula` (Chemical formula)
 
-The notebook will prompt you to drop columns in Step 2. These non-numeric identifiers should not be included in Pearson correlation calculations.
+The notebook will prompt you to drop columns in **Step 2**. These non-numeric identifiers should not be included in Pearson correlation calculations.
 
 ### Workflow
 
@@ -121,13 +122,13 @@ The tool guides you through 7 interactive steps:
 4. **Calculate Correlation** - Pearson correlation coefficients computed automatically
 5. **Dynamic Sizing** - Figure dimensions calculated based on parameter count
 6. **Generate Visualization** - Custom colormap heatmap with correlation values
-7. **Save Results** - Export PDF (visualization) and Excel (data table)
+7. **Save Results** - Export PDF (visualization) and CSV (data table)
 
 ### Output Files
 
 The tool generates two files per run:
-1. **`prefix_matrix.pdf`**: High-resolution (800 DPI) heatmap with LaTeX labels
-2. **`prefix_matrix.xlsx`**: Correlation matrix with original column names
+1. **`prefix_matrix.pdf`**: Heatmap with LaTeX labels
+2. **`prefix_matrix.csv`**: Correlation matrix with original column names
 
 ---
 
@@ -147,7 +148,9 @@ BM = $B_{vrh}$
 DT_AGL = $\Theta_D$
 ```
 
-To use symbols in your figures, select the "file" option in Step 3. For the complete list of feature definitions and symbols, refer to `symbol_conversion.txt`.
+To use symbols in your figures, select the "file" option in Step 3. Include the location where the file is stored. 
+
+For the complete list of feature definitions and symbols, refer to `symbol_conversion.txt`.
 
 ---
 
@@ -156,22 +159,22 @@ To use symbols in your figures, select the "file" option in Step 3. For the comp
 The `results/` folder contains pre-generated outputs:
 
 - **`heatmaps/`**: PDF files with correlation visualizations
-  - `Aflow_CM.pdf` - AFLOW dataset correlations
-  - `MP_CM.pdf` - Materials Project dataset correlations
+  - `Aflow_CM_matrix.pdf` - AFLOW dataset correlations
+  - `MP_CM_matrix.pdf` - Materials Project dataset correlations
 
 - **`matrices/`**: Excel files with correlation data
-  - `Aflow_CM.xlsx` - AFLOW correlation matrix
-  - `MP_CM.xlsx` - Materials Project correlation matrix
+  - `Aflow_CM_matrix.csv` - AFLOW correlation matrix
+  - `MP_CM_matrix.csv` - Materials Project correlation matrix
 
 ---
 
 ## Tips for Best Results
 
-1. **Always drop ID columns** (`auid`, `MP_ID`, `formula`) before correlation analysis
+1. **Always drop ID columns** (`auid`, `MP_ID`, `formula`) before correlation analysis.
 2. **Remove non-numeric columns** to avoid calculation errors
-3. **Font size**: Start with 36 and adjust if labels overlap (decrease) or appear small (increase)
-4. **Symbol file**: Keep `symbol_conversion.txt` in the same directory as your data for easy loading
-5. **Output organization**: Use descriptive file prefixes (e.g., "AFLOW_elastic", "MP_thermal")
+3. **Font size**: Start with 36 and adjust if labels overlap (decrease) or appear small (increase).
+4. **Symbol file**: Keep `symbol_conversion.txt` in the same directory as your data for easy loading.
+5. **Output organization**: Use descriptive file prefixes (e.g., "AFLOW_elastic", "MP_thermal").
 
 ---
 
@@ -227,8 +230,9 @@ MIT License - See LICENSE file for details
 
 ## Acknowledgments
 
-- **Materials Project** for DFT-computed materials database
-- **AFLOW Consortium** for high-throughput materials data
+- **[Materials Project](https://materialsproject.org)** for DFT-computed materials database
+- **[AFLOW Consortium](https://aflow.org)** for high-throughput materials data
 - The open-source Python community for excellent scientific computing libraries
 
-**Last Updated**: 17-12-2025
+---
+**Last Updated**: 07-04-2026

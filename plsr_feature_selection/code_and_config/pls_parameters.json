@@ -1,0 +1,218 @@
+{
+  "metadata": {
+    "description": "Configuration file for PLS-based feature selection for thermodynamic property prediction",
+    "version": "1.0",
+    "last_updated": "2026-04-08",
+    "application": "Dimensionality reduction from latent space to uncover physical variable for property prediciton: Θ_D, C_p, κ, and other thermodynamic/transport properties"
+  },
+
+  "default_parameters": {
+    "n_components": {
+      "value": 5,
+      "description": "Number of PLS components to extract",
+      "range": [2, 20],
+      "recommendation": "Start with 5; increase if cumulative R² < 0.85"
+    },
+    "loading_threshold": {
+      "value": 0.10,
+      "description": "Minimum absolute loading value for feature retention (|L| > threshold)",
+      "range": [0.05, 0.30],
+      "recommendation": "0.10 balances feature sparsity and predictive power. Can try 0.20 for stricter feature extaction."
+    },
+    "incremental_r2_threshold": {
+      "value": 0.05,
+      "description": "Minimum incremental R² contribution for component significance (ΔR² > threshold)",
+      "range": [0.01, 0.15],
+      "recommendation": "0.05 ensures only meaningful components are retained"
+    },
+    "scale_features": {
+      "value": true,
+      "description": "Apply StandardScaler normalization (μ=0, σ=1)",
+      "recommendation": "Always true for PLS to ensure equal feature weighting"
+    }
+  },
+
+  "gridsearch_parameters": {
+    "cv_folds": {
+      "value": 5,
+      "description": "Number of cross-validation folds",
+      "range": [3, 10],
+      "recommendation": "5 provides good bias-variance tradeoff"
+    },
+    "max_iter": {
+      "values": [500, 800, 1000, 2000],
+      "description": "Maximum iterations for NIPALS algorithm convergence",
+      "recommendation": "Start with [500, 1000]; increase if convergence warnings occur"
+    },
+    "tol": {
+      "values": [1e-8, 1e-6, 1e-4],
+      "description": "Convergence tolerance for NIPALS solver",
+      "recommendation": "1e-8 for high precision; 1e-4 for faster convergence"
+    },
+    "scoring_metrics": {
+      "primary": "RMSE",
+      "secondary": "R2",
+      "description": "Metrics for model selection",
+      "recommendation": "Refit on RMSE to minimize prediction errors"
+    },
+    "n_jobs": {
+      "value": -1,
+      "description": "Number of parallel jobs (-1 uses all CPU cores)",
+      "recommendation": "Use -1 for fastest training"
+    },
+    "random_state": {
+      "value": 42,
+      "description": "Random seed for reproducibility",
+      "recommendation": "Keep fixed for consistent results across runs"
+    }
+  },
+
+  "prediction_results_and_property_specific_configs": {
+    "debye_temperature": {
+      "target_column": ["DT", "DT_AGL"],
+      "pls_recommended_features": ["SM", "YM", "VPA", "D", "BM", "PR"],
+      "n_components": 5,
+      "loading_threshold": 0.10,
+      "expected_top_features": 4,
+      "notes": "Debye temperature have strong linear correlation with elastic moduli"
+    },
+    "heat_capacity": {
+      "target_column": ["Cp_300", "Cv_300"],
+      "pls_recommended_features": ["NA", "PR", "PUGR", "VPA", "SM", "YM"],
+      "n_components": 5,
+      "loading_threshold": 0.10,
+      "expected_top_features": 6,
+      "notes": "Heat capacity depends on number of atoms (Dulong-Petit) and bonding character"
+    },
+    "thermal_expansion": {
+      "target_column": ["TE_300", "TEX_300"],
+      "pls_recommended_features": ["gruneisen", "BM", "VPA", "D", "EPA"],
+      "n_components": 5,
+      "loading_threshold": 0.10,
+      "expected_top_features": 5,
+      "notes": "Thermal expansion requires Grüneisen parameter for anharmonicity"
+    },
+    "thermal_conductivity": {
+      "target_column": ["TC_300"],
+      "pls_recommended_features": ["SM", "YM", "NA", "NE", "D"],
+      "n_components": 5,
+      "loading_threshold": 0.10,
+      "expected_top_features": 5,
+      "notes": "Thermal conductivity depends on stiffness, and structural complexity"
+    },
+    "acoustic_debye_temperature": {
+      "target_column": ["DT_A_AGL"],
+      "recommended_features": ["SM", "YM", "VPA", "D", "NA", "NE"],
+      "n_components": 5,
+      "loading_threshold": 0.10,
+      "expected_top_features": 6,
+      "notes": "Acoustic Debye temperature focuses on low-frequency phonon modes"
+    }
+  },
+
+  "feature_symbols_latex": {
+    "structural": {
+      "NE": "$N_E$",
+      "NA": "$N_A$",
+      "V": "$V$",
+      "VPA": "$V_{\\mathrm{atom}}$",
+      "D": "$\\rho$"
+    },
+    "electronic": {
+      "BGAP": "$E_g$",
+      "EPA": "$E_{\\mathrm{atom}}$",
+      "FEPA": "$\\Delta H_f$",
+      "ENPA": "$H_{\\mathrm{atom}}$",
+      "EFMR": "$E_F$"
+    },
+    "magnetic": {
+      "TM": "$M_{\\mathrm{total}}$",
+      "MSITE": "$N_{\\mathrm{mag}}$",
+      "ASPIN": "$\\hat{S}_{\\mathrm{atom}}$"
+    },
+    "mechanical": {
+      "BM": "$B_{\\mathrm{VRH}}$",
+      "SM": "$G_{\\mathrm{VRH}}$",
+      "YM": "$E$",
+      "PR": "$\\nu$",
+      "ANIT": "$A$",
+      "PUGR": "$G/B$",
+      "IPUGR": "$B/G$"
+    },
+    "vibrational": {
+      "Avg_SS": "$v_m$",
+      "L_SS": "$v_l$",
+      "T_SS": "$v_t$",
+      "gruneisen": "$\\gamma$"
+    },
+    "thermodynamic": {
+      "DT": "$\\Theta_D$",
+      "DT_AGL": "$\\Theta_D$",
+      "DT_A_AGL": "$\\Theta_{D,a}$",
+      "Cp_300": "$C_p$",
+      "Cv_300": "$C_v$",
+      "TC_300": "$\\kappa$",
+      "TE_300": "$\\alpha$",
+      "TEX_300": "$\\alpha$",
+      "VIB_EN_300": "$S_{\\mathrm{atom}}^{\\mathrm{vib}}$",
+      "VIB_FE_300": "$F_{\\mathrm{atom}}^{\\mathrm{vib}}$"
+    }
+  },
+
+  "columns_to_drop": {
+    "identifiers": ["MP_ID", "auid", "formula"],
+    "description": "Non-numerical columns that must be removed before PLS training",
+    "reason": "These are string identifiers with no numerical meaning for regression"
+  },
+
+  "data_quality_checks": {
+    "missing_value_threshold": 0.05,
+    "outlier_std_threshold": 3.0,
+    "min_samples": 100,
+    "min_features": 3,
+    "vif_threshold": 10.0,
+    "description": "Quality control parameters for data validation"
+  },
+
+  "output_settings": {
+    "save_plots": true,
+    "plot_dpi": 600,
+    "plot_format": "png/pdf",
+    "save_excel": true,
+    "excel_sheets": [
+      "PLS_Summary",
+      "Selected_Features",
+      "PLS_Loadings",
+      "Metadata",
+      "GridSearch_Results"
+    ],
+    "verbose": true
+  },
+
+  "usage_notes": {
+    "critical_warnings": [
+      "⚠️ ALWAYS drop 'MP_ID', 'auid', and 'formula' before training",
+      "⚠️ Features must be standardized (StandardScaler) for valid loadings",
+      "⚠️ Ensure target property has no missing values",
+      "⚠️ Check for multicollinearity (VIF) in selected features"
+    ],
+    "best_practices": [
+      "✓ Start with default parameters, then fine-tune",
+      "✓ Validate on independent test set (80/20 split)",
+      "✓ Compare PLS results with correlation analysis",
+      "✓ Document property-specific configurations for reproducibility"
+    ],
+    "troubleshooting": {
+      "low_r2": "Increase n_components or lower loading_threshold",
+      "convergence_warnings": "Increase max_iter to [2000, 5000]",
+      "too_many_features": "Increase loading_threshold to 0.15-0.20",
+      "too_few_features": "Decrease loading_threshold to 0.05-0.08"
+    }
+  },
+
+  "references": {
+    "pls_theory": "Wold, S. et al. (2001). PLS-regression: a basic tool of chemometrics. Chemometrics and Intelligent Laboratory Systems, 58(2), 109-130.",
+    "feature_selection": "Mehmood, T. et al. (2012). A review of variable selection methods in Partial Least Squares Regression. Chemometrics and Intelligent Laboratory Systems, 118, 62-69.",
+    "cross_validation": "Kohavi, R. (1995). A study of cross-validation and bootstrap for accuracy estimation and model selection. IJCAI, 14(2), 1137-1145."
+  }
+}
