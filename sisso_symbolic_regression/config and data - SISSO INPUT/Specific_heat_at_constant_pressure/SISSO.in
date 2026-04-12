@@ -9,7 +9,7 @@ ntask=1                 !(R&C) Multi-task learning (MTL) is invoked if >1.
 task_weighting=1        !(R) MTL 1: no weighting (tasks treated equally), 2: weighted by the # of samples.
 scmt=.false.            !(R) Sign-Constrained MTL is invoked if .true.
 desc_dim=1              !(R&C) Dimension of the descriptor, a hyperparmaeter.
-nsample=5100               !(R) Number of samples in train.dat. For MTL, set nsample=N1,N2,... for each task.
+nsample=5077               !(R) Number of samples in train.dat. For MTL, set nsample=N1,N2,... for each task.
 !nsample=(n1,n2,...)    !(C) Number of samples. For MTL, set nsample=(n1,n2,...),(m1,m2,...),... for each tak.
 restart=0               !(R&C) 0: starts from scratch, 1: continues the job(progress in the file CONTINUE)
 
@@ -19,12 +19,12 @@ restart=0               !(R&C) 0: starts from scratch, 1: continues the job(prog
 ! scd: standard Cauchy distribution
 !>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 nsf= 5                 !(R&C) Number of scalar features provided in the file train.dat
-ops='(+)(-)(*)(/)(^-1)(^2)(^3)(sqrt)(cbrt)(^6)(exp)(exp-)'     !(R&C) Please customize the operators from the list shown above.
+ops='(+)(-)(*)(/)(exp)(exp-)(^-1)(^2)(^3)(sqrt)(cbrt)(|-|)(^6)(sin)(cos)'     !(R&C) Please customize the operators from the list shown above.
 fcomplexity=7          !(R&C) Maximal feature complexity (# of operators in a feature), integer usually 0 to 7.
 funit=(4:4)(5:5)       !(R&C) (n1:n2): features from n1 to n2 in the train.dat have same units
-fmax_min=1e-3          !(R&C) The feature will be discarded if the max. abs. value in it is < fmax_min.
-fmax_max=1e5           !(R&C) The feature will be discarded if the max. abs. value in it is > fmax_max.
-nf_sis=20              !(R&C) Number of features in each of the SIS-selected subspace. 
+fmax_min=1e-8          !(R&C) The feature will be discarded if the max. abs. value in it is < fmax_min.
+fmax_max=1e8           !(R&C) The feature will be discarded if the max. abs. value in it is > fmax_max.
+nf_sis=200              !(R&C) Number of features in each of the SIS-selected subspace. 
 
 !>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ! Descriptor identification (DI) via sparse regression
@@ -33,6 +33,6 @@ method_so='L0'         !(R&C) 'L0' or 'L1L0'(LASSO+L0). The 'L0' is recommended 
 nl1l0= 1               !(R) Only useful if method_so = 'L1L0', number of LASSO-selected features for the L0.
 fit_intercept=.true.   !(R) Fit to a nonzero (.true.) or zero (.false.) intercept for the linear model.
 metric='RMSE'          !(R) The metric for model selection in regression: RMSE or MaxAE (max absolute error)
-nmodels=100            !(R&C) Number of the top-ranked models to output (see the folder 'models')
+nmodels=200            !(R&C) Number of the top-ranked models to output (see the folder 'models')
 isconvex=(1,1)         !(C) Each data group constrained to be convex domain, 1: YES; 0: NO
 bwidth=0.001           !(C) Boundary tolerance for classification 

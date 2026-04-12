@@ -42,9 +42,9 @@ Detailed documentation for all files in the `data/` folder.
 
 ---
 
-### `mp_data.csv`
+### `mp_data.xlsx`
 - **Source**: Materials Project API (v2025.04.10)
-- **Size**: ~1,15,476 KB
+- **Size**: ~22,821 KB
 - **Format**: Tab-separated, one compound per row
 - **Key raw columns**:
 

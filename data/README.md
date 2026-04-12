@@ -14,7 +14,7 @@ Physics-Informed-Symbolic-Regression-for-Phonon-Related-Property-Prediction-and-
 ├── data/
 │   ├── raw/
 │   │   ├── aflow_data.csv          # Raw AFLOW database export
-│   │   └── mp_data.csv             # Raw Materials Project database export
+│   │   └── mp_data.xlsx             # Raw Materials Project database export
 │   └── processed/
 │       ├── AFLOW_cleaned_dataset.csv   # Cleaned & renamed AFLOW features
 │       ├── MP_cleaned_dataset.csv      # Cleaned & renamed MP features

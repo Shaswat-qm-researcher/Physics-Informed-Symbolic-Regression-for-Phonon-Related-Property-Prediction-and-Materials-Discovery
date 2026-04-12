@@ -4,15 +4,15 @@
 ****************************************************************
 
 Read in data from train.dat
-Standard Deviation (sqrt[sum(y-y_mean)^2/n]) of the target property:  10.08820
+Standard Deviation (sqrt[sum(y-y_mean)^2/n]) of the target property:  10.11084
 Read in data from SISSO.in
 Property type:     1
 Number of tasks:        1
 Descriptor dimension:        1
-Number of samples for the task(s):   5000
+Number of samples for the task(s):   5077
 Restarts :  0
 Scheme for feature storing in memory:        1
-Number of scalar features:        6
+Number of scalar features:        5
 Tier of the feature space (max depth of expression tree):        3
 Maximal feature complexity (number of operators in a feature):        7
 Unit of input primary feature, each represented by a row vector: 
@@ -21,11 +21,10 @@ Unit of input primary feature, each represented by a row vector:
     0.00    0.00
     0.00    0.00
     0.00    0.00
-    0.00    1.00
 The feature will be discarded if the minimum of the maximal abs. value in it <    0.10000E-07
 The faature will be discarded if the maximum of the maximal abs. value in it >     0.10000E+09
-Size of the SIS-selected (single) subspace :    100
-Operators for feature construction: (+)(-)(*)(/)(exp)(exp-)(^-1)(^2)(^3)(sqrt)(cbrt)(^6)(sin)(cos) (+)(-)(*)(/)(exp)(exp-)(^-1)(^2)(^3)(sqrt)(cbrt)(^6)(sin)(cos) (+)(-)(*)(/)(exp)(exp-)(^-1)(^2)(^3)(sqrt)(cbrt)(^6)(sin)(cos) 
+Size of the SIS-selected (single) subspace :    200
+Operators for feature construction: (+)(-)(*)(/)(exp)(exp-)(^-1)(^2)(^3)(sqrt)(cbrt)(|-|)(^6)(sin)(cos) (+)(-)(*)(/)(exp)(exp-)(^-1)(^2)(^3)(sqrt)(cbrt)(|-|)(^6)(sin)(cos) (+)(-)(*)(/)(exp)(exp-)(^-1)(^2)(^3)(sqrt)(cbrt)(|-|)(^6)(sin)(cos) 
 Method for sparse regression:  L0        
 Fitting intercept:      T
 Metric for model selection: RMSE
@@ -35,25 +34,25 @@ Number of the top-ranked models to output:      100
 Dimension:   1
 -------------------
 Feature Construction (FC) starts ...
-Total number of features in the space Phi00:              6
-Total number of features in the space Phi01:            121
-Total number of features in the space Phi02:          17756
-Total number of features in the space Phi03:      548466651
-Size of the SIS-selected subspace from Phi03:        100
-Time (second) used for this FC:         1317.68
+Total number of features in the space Phi00:              5
+Total number of features in the space Phi01:             97
+Total number of features in the space Phi02:          14793
+Total number of features in the space Phi03:      465623809
+Size of the SIS-selected subspace from Phi03:        200
+Time (second) used for this FC:         1185.37
 
 Descriptor Identification (DI) starts ...
-Total number of SIS-selected features for this DI:        100
+Total number of SIS-selected features for this DI:        200
  
   1D descriptor/model(y=sum(ci*di)+c0) : 
 ================================================================================
      d001 = (cbrt((SM*NA))/((NA/SM)*sqrt(D)))    feature_ID:000001
  
-        coeff.(ci):     0.2787384362E+00
-                c0:    -0.3385974358E+00
-    RMSE and MaxAE:     0.2369274963E+01    0.4126575208E+02
+        coeff.(ci):     0.2789004650E+00
+                c0:    -0.3444434310E+00
+    RMSE and MaxAE:     0.2358879636E+01    0.4131169178E+02
 ================================================================================
-Time (second) used for this DI:            0.67
-Total time (second):         1318.62
+Time (second) used for this DI:            1.00
+Total time (second):         1186.61
 Have a nice day !    
 
