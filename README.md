@@ -4,6 +4,7 @@
   Phonon-Related Property Prediction and Materials Discovery
 </h1>
 
+
 <p align="center">
   <em>Bridging the gap between data-driven modeling and physical insight.</em><br>
   An XAI framework that derives compact, interpretable analytical scaling relations for phonon-related material properties — enabling targeted materials screening with DFT-level validation.
