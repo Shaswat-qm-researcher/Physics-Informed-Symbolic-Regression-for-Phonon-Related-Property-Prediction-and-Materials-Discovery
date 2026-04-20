@@ -1,7 +1,8 @@
 
-<h1 align="center" style="font-size: 1.7em; font-weight: 600; line-height: 1.3;">
+<h1 align="center" style="font-size: 1.9em; font-weight: 1000; line-height: 1.5;">
   Physics-Informed Symbolic Regression for<br>
-  Phonon-Related Property Prediction and Materials Discovery
+  Phonon-Related Property Prediction and<br> 
+  Materials Discovery
 </h1>
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white"/>
