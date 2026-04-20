@@ -1,5 +1,5 @@
 
-<h1 align="center" style="font-size: 1.8em;">
+<h1 align="center" style="font-size: 1.6em;">
   Physics-Informed Symbolic Regression for<br>
   Phonon-Related Property Prediction and Materials Discovery
 </h1>
