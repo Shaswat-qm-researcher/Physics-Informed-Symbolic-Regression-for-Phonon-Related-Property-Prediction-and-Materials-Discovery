@@ -3,19 +3,17 @@
   Physics-Informed Symbolic Regression for<br>
   Phonon-Related Property Prediction and Materials Discovery
 </h1>
-
-
-<p align="center">
-  <em>Bridging the gap between data-driven modeling and physical insight.</em><br>
-  An XAI framework that derives compact, interpretable analytical scaling relations for phonon-related material properties — enabling targeted materials screening with DFT-level validation.
-</p>
-
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white"/>
   <img src="https://img.shields.io/badge/Framework-XAI%20%7C%20Symbolic%20Regression-teal"/>
   <img src="https://img.shields.io/badge/Properties-Θ_D%20%7C%20C_v%20%7C%20κ-orange"/>
   <img src="https://img.shields.io/badge/Data-Materials%20Project%20%7C%20AFLOW-green"/>
   <img src="https://img.shields.io/badge/License-MIT-lightgrey"/>
+</p>
+
+<p align="center">
+  <em>Bridging the gap between data-driven modeling and physical insight.</em><br>
+  An XAI framework that derives compact, interpretable analytical scaling relations for phonon-related material properties — enabling targeted materials screening with DFT-level validation.
 </p>
 
 <p align="center">
