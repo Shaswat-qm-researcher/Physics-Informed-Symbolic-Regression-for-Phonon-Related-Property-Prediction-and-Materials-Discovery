@@ -1,5 +1,8 @@
 
-<h1 align="center">Physics-Informed Symbolic Regression for<br>Phonon-Related Property Prediction and Materials Discovery</h1>
+<h1 align="center" style="font-size: 1.8em;">
+  Physics-Informed Symbolic Regression for<br>
+  Phonon-Related Property Prediction and Materials Discovery
+</h1>
 
 <p align="center">
   <em>Bridging the gap between data-driven modeling and physical insight.</em><br>
